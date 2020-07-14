@@ -10,6 +10,8 @@ import Foundation
 
 final class DiskURLCache: URLCacheable {
     
+    static let `default` = DiskURLCache(with: RequestURLCache.default)
+    
     let urlCache: RequestURLCache
     
     private let concurrentQueue = DispatchQueue(label: "com.diskurlcache",

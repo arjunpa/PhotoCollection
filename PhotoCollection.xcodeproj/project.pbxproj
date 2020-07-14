@@ -3,12 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		955D6B07317B434CAA496F50 /* Pods_PhotoCollectionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE8A7129A3C7E2DB5E2DD123 /* Pods_PhotoCollectionTests.framework */; };
 		A0310AF0D5DEAC2B67B409A6 /* Pods_PhotoCollection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF59F64C283D4C1223BC7BB /* Pods_PhotoCollection.framework */; };
+		C20D380724BDB12F007B38EB /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D380624BDB12F007B38EB /* APIService.swift */; };
+		C20D380B24BDB2EC007B38EB /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D380A24BDB2EC007B38EB /* Requestable.swift */; };
+		C20D380D24BDB359007B38EB /* APIServiceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D380C24BDB359007B38EB /* APIServiceInterface.swift */; };
+		C20D381024BDDF60007B38EB /* RequestURLCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D380F24BDDF60007B38EB /* RequestURLCache.swift */; };
+		C20D381224BDF6CD007B38EB /* DiskURLCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D381124BDF6CD007B38EB /* DiskURLCache.swift */; };
+		C20D381424BDF6EA007B38EB /* URLCacheable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D381324BDF6EA007B38EB /* URLCacheable.swift */; };
 		C2C4675D24BD995A001C6778 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C4675C24BD995A001C6778 /* AppDelegate.swift */; };
 		C2C4676124BD995A001C6778 /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C4676024BD995A001C6778 /* PhotoListViewController.swift */; };
 		C2C4676424BD995A001C6778 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2C4676224BD995A001C6778 /* Main.storyboard */; };
@@ -32,6 +38,12 @@
 		3DED73A42FBF2B2096C312F9 /* Pods-PhotoCollection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoCollection.release.xcconfig"; path = "Target Support Files/Pods-PhotoCollection/Pods-PhotoCollection.release.xcconfig"; sourceTree = "<group>"; };
 		9AF59F64C283D4C1223BC7BB /* Pods_PhotoCollection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoCollection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8EEE45396393A0A2E78F5DD /* Pods-PhotoCollection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoCollection.debug.xcconfig"; path = "Target Support Files/Pods-PhotoCollection/Pods-PhotoCollection.debug.xcconfig"; sourceTree = "<group>"; };
+		C20D380624BDB12F007B38EB /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		C20D380A24BDB2EC007B38EB /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
+		C20D380C24BDB359007B38EB /* APIServiceInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceInterface.swift; sourceTree = "<group>"; };
+		C20D380F24BDDF60007B38EB /* RequestURLCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestURLCache.swift; sourceTree = "<group>"; };
+		C20D381124BDF6CD007B38EB /* DiskURLCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskURLCache.swift; sourceTree = "<group>"; };
+		C20D381324BDF6EA007B38EB /* URLCacheable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLCacheable.swift; sourceTree = "<group>"; };
 		C2C4675924BD995A001C6778 /* PhotoCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2C4675C24BD995A001C6778 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2C4676024BD995A001C6778 /* PhotoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
@@ -74,7 +86,6 @@
 				00D1AE1746AC0DA21C87B9BD /* Pods-PhotoCollectionTests.debug.xcconfig */,
 				C76C404E017D86C11D7D42D4 /* Pods-PhotoCollectionTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -85,6 +96,25 @@
 				FE8A7129A3C7E2DB5E2DD123 /* Pods_PhotoCollectionTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C20D380924BDB2D9007B38EB /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				C20D380A24BDB2EC007B38EB /* Requestable.swift */,
+				C20D381324BDF6EA007B38EB /* URLCacheable.swift */,
+				C20D380C24BDB359007B38EB /* APIServiceInterface.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		C20D380E24BDDF38007B38EB /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				C20D380F24BDDF60007B38EB /* RequestURLCache.swift */,
+				C20D381124BDF6CD007B38EB /* DiskURLCache.swift */,
+			);
+			name = Foundation;
 			sourceTree = "<group>";
 		};
 		C2C4675024BD995A001C6778 = {
@@ -110,8 +140,11 @@
 		C2C4675B24BD995A001C6778 /* PhotoCollection */ = {
 			isa = PBXGroup;
 			children = (
+				C20D380E24BDDF38007B38EB /* Foundation */,
+				C20D380924BDB2D9007B38EB /* Protocols */,
 				C2C4675C24BD995A001C6778 /* AppDelegate.swift */,
 				C2C4676024BD995A001C6778 /* PhotoListViewController.swift */,
+				C20D380624BDB12F007B38EB /* APIService.swift */,
 				C2C4676224BD995A001C6778 /* Main.storyboard */,
 				C2C4676524BD995B001C6778 /* Assets.xcassets */,
 				C2C4676724BD995B001C6778 /* LaunchScreen.storyboard */,
@@ -297,8 +330,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C20D381424BDF6EA007B38EB /* URLCacheable.swift in Sources */,
+				C20D381024BDDF60007B38EB /* RequestURLCache.swift in Sources */,
 				C2C4676124BD995A001C6778 /* PhotoListViewController.swift in Sources */,
+				C20D380B24BDB2EC007B38EB /* Requestable.swift in Sources */,
+				C20D380724BDB12F007B38EB /* APIService.swift in Sources */,
+				C20D380D24BDB359007B38EB /* APIServiceInterface.swift in Sources */,
 				C2C4675D24BD995A001C6778 /* AppDelegate.swift in Sources */,
+				C20D381224BDF6CD007B38EB /* DiskURLCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

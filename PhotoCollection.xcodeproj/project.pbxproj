@@ -24,6 +24,7 @@
 		C20D382324BE54C5007B38EB /* APIServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D382224BE54C5007B38EB /* APIServiceError.swift */; };
 		C20D382624BE55C6007B38EB /* URLRequest+RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D382524BE55C6007B38EB /* URLRequest+RequestMethod.swift */; };
 		C20D382824BE58C5007B38EB /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D382724BE58C5007B38EB /* APIEndpoint.swift */; };
+		C20D382A24BE6417007B38EB /* CacheURLResponse+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D382924BE6417007B38EB /* CacheURLResponse+Decodable.swift */; };
 		C2C4675D24BD995A001C6778 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C4675C24BD995A001C6778 /* AppDelegate.swift */; };
 		C2C4676124BD995A001C6778 /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C4676024BD995A001C6778 /* PhotoListViewController.swift */; };
 		C2C4676424BD995A001C6778 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2C4676224BD995A001C6778 /* Main.storyboard */; };
@@ -62,6 +63,7 @@
 		C20D382224BE54C5007B38EB /* APIServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceError.swift; sourceTree = "<group>"; };
 		C20D382524BE55C6007B38EB /* URLRequest+RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+RequestMethod.swift"; sourceTree = "<group>"; };
 		C20D382724BE58C5007B38EB /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
+		C20D382924BE6417007B38EB /* CacheURLResponse+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CacheURLResponse+Decodable.swift"; sourceTree = "<group>"; };
 		C2C4675924BD995A001C6778 /* PhotoCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2C4675C24BD995A001C6778 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2C4676024BD995A001C6778 /* PhotoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				C20D382524BE55C6007B38EB /* URLRequest+RequestMethod.swift */,
+				C20D382924BE6417007B38EB /* CacheURLResponse+Decodable.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C20D382A24BE6417007B38EB /* CacheURLResponse+Decodable.swift in Sources */,
 				C20D381424BDF6EA007B38EB /* URLCacheable.swift in Sources */,
 				C20D382324BE54C5007B38EB /* APIServiceError.swift in Sources */,
 				C20D381024BDDF60007B38EB /* RequestURLCache.swift in Sources */,

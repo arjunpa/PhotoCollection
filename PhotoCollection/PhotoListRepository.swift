@@ -24,18 +24,27 @@ final class PhotoListRepository: PhotoListRepositoryInterface {
     }
     
     func fetchPhotos(with completion: @escaping (Result<[Photo], Error>) -> Void) {
-        guard self.apiService.isReachable else {
-            return
-        }
-        self.fetchPhotosFromRemote(with: completion)
-    }
-    
-    private func fetchPhotosFromRemote(with completion: @escaping (Result<[Photo], Error>) -> Void) {
         let request = Request(url: APIEndpoint.getPhotos,
                               method: .get,
                               parameters: nil,
                               headers: nil,
                               encoding: GetRequestEncoding())
+        guard self.apiService.isReachable else {
+            self.cache.get(forRequest: request) { cachedResponse in
+                guard let cachedResponse = cachedResponse,
+                      let decoded = try? cachedResponse.decoded(with: [Photo].self) else {
+                        self.fetchPhotosFromRemote(with: request, completion: completion)
+                        return
+                }
+                completion(.success(decoded))
+            }
+            return
+        }
+        self.fetchPhotosFromRemote(with: request, completion: completion)
+    }
+    
+    private func fetchPhotosFromRemote(with request: Requestable, completion: @escaping (Result<[Photo], Error>) -> Void) {
+        
         self.apiService.request(for: request) { (result: Result<APIHTTPDecodableResponse<[Photo]>, Error>) in
                                                 switch result {
                                                 case .success(let response):

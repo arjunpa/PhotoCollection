@@ -9,7 +9,7 @@
 import Foundation
 
 protocol PhotoListRepositoryInterface {
-    func fetchPhotos(with completion: (Result<[Photo], Error>) -> Void)
+    func fetchPhotos(with completion: @escaping (Result<[Photo], Error>) -> Void)
 }
 
 final class PhotoListRepository: PhotoListRepositoryInterface {
@@ -23,13 +23,31 @@ final class PhotoListRepository: PhotoListRepositoryInterface {
         self.cache = cache
     }
     
-    func fetchPhotos(with completion: (Result<[Photo], Error>) -> Void) {
+    func fetchPhotos(with completion: @escaping (Result<[Photo], Error>) -> Void) {
         guard self.apiService.isReachable else {
-            
+            return
         }
+        self.fetchPhotosFromRemote(with: completion)
     }
     
-    private func fetchPhotosFromRemote(with completion: (Result<[Photo], Error>) -> Void) {
-        self.apiService.request(for: <#T##Requestable#>, completion: <#T##(Result<APIHTTPResponse<Decodable>, Error>) -> Void#>)
+    private func fetchPhotosFromRemote(with completion: @escaping (Result<[Photo], Error>) -> Void) {
+        let request = Request(url: APIEndpoint.getPhotos,
+                              method: .get,
+                              parameters: nil,
+                              headers: nil,
+                              encoding: GetRequestEncoding())
+        self.apiService.request(for: request) { (result: Result<APIHTTPDecodableResponse<[Photo]>, Error>) in
+                                                switch result {
+                                                case .success(let response):
+                                                    completion(.success(response.decoded))
+                                                    guard let httpResponse = response.httpResponse else { return }
+                                                    self.cache.store(response: CachedURLResponse(response: httpResponse,
+                                                                                                 data: response.data),
+                                                                     forRequest: request,
+                                                                     completion: nil)
+                                                case .failure(let error):
+                                                    completion(.failure(error))
+                                                }
+        }
     }
 }

@@ -12,6 +12,6 @@ typealias URLCacheableStoreCompletion = (Bool) -> ()
 typealias URLCacheableGetCompletion = (CachedURLResponse?) -> ()
 
 protocol URLCacheable {
-    func store(response: CachedURLResponse, forRequest request: URLRequest, completion: URLCacheableStoreCompletion?)
-    func get(forRequest request: URLRequest, completion: @escaping URLCacheableGetCompletion)
+    func store(response: CachedURLResponse, forRequest request: Requestable, completion: URLCacheableStoreCompletion?)
+    func get(forRequest request: Requestable, completion: @escaping URLCacheableGetCompletion)
 }

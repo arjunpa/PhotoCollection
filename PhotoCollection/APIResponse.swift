@@ -8,7 +8,13 @@
 
 import Foundation
 
-struct APIHTTPResponse<T> {
-    let dataResult: T
+struct APIHTTPDataResponse {
+    let data: Data
+    let httpResponse: HTTPURLResponse?
+}
+
+struct APIHTTPDecodableResponse<T> {
+    let data: Data
+    let decoded: T
     let httpResponse: HTTPURLResponse?
 }

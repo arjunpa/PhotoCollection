@@ -24,13 +24,13 @@ class APIService: APIServiceInterface {
         self.reachabilityManager = reachabilityManager
     }
     
-    func dataRequest(for request: Requestable, completion: @escaping (Result<APIHTTPResponse<Data>, Error>) -> Void) {
+    func dataRequest(for request: Requestable, completion: @escaping (Result<APIHTTPDataResponse, Error>) -> Void) {
         do {
             let urlRequest = try request.asURLRequest()
             self.session.request(urlRequest).responseData { dataResult in
                 switch dataResult.result {
                 case .success(let resultData):
-                    completion(.success(APIHTTPResponse<Data>(dataResult: resultData, httpResponse: dataResult.response)))
+                    completion(.success(APIHTTPDataResponse(data: resultData, httpResponse: dataResult.response)))
                 case .failure(let error):
                     completion(.failure(error))
                 }
@@ -40,13 +40,15 @@ class APIService: APIServiceInterface {
         }
     }
     
-    func request<T: Decodable>(for request: Requestable, completion: @escaping (Result<APIHTTPResponse<T>, Error>) -> Void) {
+    func request<T: Decodable>(for request: Requestable, completion: @escaping (Result<APIHTTPDecodableResponse<T>, Error>) -> Void) {
         self.dataRequest(for: request) { result in
             switch result {
             case .success(let apiResult):
                 do {
-                    let decoded = try JSONDecoder().decode(T.self, from: apiResult.dataResult)
-                    completion(.success(APIHTTPResponse<T>(dataResult: decoded, httpResponse: apiResult.httpResponse)))
+                    let decoded = try JSONDecoder().decode(T.self, from: apiResult.data)
+                    completion(.success(APIHTTPDecodableResponse<T>(data: apiResult.data,
+                                                                    decoded: decoded,
+                                                                    httpResponse: apiResult.httpResponse)))
                 } catch {
                     completion(.failure(error))
                 }

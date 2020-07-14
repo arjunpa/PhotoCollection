@@ -19,16 +19,28 @@ final class DiskURLCache: URLCacheable {
         self.urlCache = urlCache
     }
     
-    func store(response: CachedURLResponse, forRequest request: URLRequest, completion: URLCacheableStoreCompletion?) {
+    func store(response: CachedURLResponse, forRequest request: Requestable, completion: URLCacheableStoreCompletion?) {
         self.concurrentQueue.async(flags: .barrier) { [weak self] in
-            self?.urlCache.storeCachedResponse(response, for: request)
+            guard let urlRequest = try? request.asURLRequest(),
+                  let methodRaw = urlRequest.httpMethod,
+                  RequestMethod(rawValue: methodRaw) == .some(.get) else {
+                    completion?(false)
+                    return
+            }
+            self?.urlCache.storeCachedResponse(response, for: urlRequest)
             completion?(true)
         }
     }
     
-    func get(forRequest request: URLRequest, completion: @escaping URLCacheableGetCompletion) {
+    func get(forRequest request: Requestable, completion: @escaping URLCacheableGetCompletion) {
         self.concurrentQueue.async { [weak self] in
-            completion(self?.urlCache.cachedResponse(for: request))
+            guard let urlRequest = try? request.asURLRequest(),
+                  let methodRaw = urlRequest.httpMethod,
+                  RequestMethod(rawValue: methodRaw) == .some(.get) else {
+                    completion(nil)
+                    return
+            }
+            completion(self?.urlCache.cachedResponse(for: urlRequest))
         }
     }
 }

@@ -30,7 +30,7 @@ struct Request: Requestable {
     }
     
     func asURLRequest() throws -> URLRequest {
-        var request = try URLRequest(url: self.url, method: self.httpMethod, headers: nil)
+        var request = try URLRequest(with: self.url, method: self.httpMethod, headers: self.headers)
         request.allHTTPHeaderFields = self.headers
         if let parameters = self.parameters {
             request = try self.encoding.encode(request, with: parameters)

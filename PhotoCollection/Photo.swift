@@ -11,7 +11,7 @@ import Foundation
 struct Photo: Decodable {
     
     enum CodingKeys: String, CodingKey {
-        case albumID
+        case albumID = "albumId"
         case id
         case title
         case url

@@ -9,6 +9,7 @@
 import Foundation
 
 protocol APIServiceInterface {
-    func request<T: Decodable>(for request: Requestable, completion: @escaping (Result<T, Error>) -> Void)
-    func dataRequest(for request: Requestable, completion: @escaping (Result<Data, Error>) -> Void)
+    var isReachable: Bool { get }
+    func request<T: Decodable>(for request: Requestable, completion: @escaping (Result<APIHTTPResponse<T>, Error>) -> Void)
+    func dataRequest(for request: Requestable, completion: @escaping (Result<APIHTTPResponse<Data>, Error>) -> Void)
 }

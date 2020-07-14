@@ -11,19 +11,26 @@ import Alamofire
 
 class APIService: APIServiceInterface {
     
-    private let session: Session
+    let session: Session
     
-    init(session: Session = .default) {
-        self.session = session
+    let reachabilityManager: NetworkReachabilityManager?
+    
+    var isReachable: Bool {
+        return self.reachabilityManager?.isReachable ?? false
     }
     
-    func dataRequest(for request: Requestable, completion: @escaping (Result<Data, Error>) -> Void) {
+    init(session: Session = .default, reachabilityManager: NetworkReachabilityManager? = NetworkReachabilityManager.default) {
+        self.session = session
+        self.reachabilityManager = reachabilityManager
+    }
+    
+    func dataRequest(for request: Requestable, completion: @escaping (Result<APIHTTPResponse<Data>, Error>) -> Void) {
         do {
             let urlRequest = try request.asURLRequest()
             self.session.request(urlRequest).responseData { dataResult in
                 switch dataResult.result {
                 case .success(let resultData):
-                    completion(.success(resultData))
+                    completion(.success(APIHTTPResponse<Data>(dataResult: resultData, httpResponse: dataResult.response)))
                 case .failure(let error):
                     completion(.failure(error))
                 }
@@ -33,13 +40,13 @@ class APIService: APIServiceInterface {
         }
     }
     
-    func request<T: Decodable>(for request: Requestable, completion: @escaping (Result<T, Error>) -> Void) {
+    func request<T: Decodable>(for request: Requestable, completion: @escaping (Result<APIHTTPResponse<T>, Error>) -> Void) {
         self.dataRequest(for: request) { result in
             switch result {
-            case .success(let data):
+            case .success(let apiResult):
                 do {
-                    let decoded = try JSONDecoder().decode(T.self, from: data)
-                    completion(.success(decoded))
+                    let decoded = try JSONDecoder().decode(T.self, from: apiResult.dataResult)
+                    completion(.success(APIHTTPResponse<T>(dataResult: decoded, httpResponse: apiResult.httpResponse)))
                 } catch {
                     completion(.failure(error))
                 }

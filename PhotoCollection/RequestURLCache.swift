@@ -14,8 +14,22 @@ final class RequestURLCache: URLCache {
     
     private static let shouldExpireKey = "shouldExpire"
     
+    static let `default` = RequestURLCache(memoryCapacity: 10 * 1024 * 1024,
+                                           diskCapacity: 25 * 1024 * 1024,
+                                           diskPath: nil)
+    
     /// The cache expiry in seconds.
-    let defaultCacheExpiry: TimeInterval = 42500
+    let defaultCacheExpiry: TimeInterval
+    
+    init(memoryCapacity: Int, diskCapacity: Int, diskPath path: String?, expiry: TimeInterval) {
+        self.defaultCacheExpiry = expiry
+        super.init(memoryCapacity: memoryCapacity, diskCapacity: diskCapacity, diskPath: path)
+    }
+    
+    override init(memoryCapacity: Int, diskCapacity: Int, diskPath path: String?) {
+        self.defaultCacheExpiry = 43500
+        super.init(memoryCapacity: memoryCapacity, diskCapacity: diskCapacity, diskPath: path)
+    }
     
     override func cachedResponse(for request: URLRequest) -> CachedURLResponse? {
         let cachedResponse = super.cachedResponse(for: request)

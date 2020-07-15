@@ -12,8 +12,6 @@ final class RequestURLCache: URLCache {
     
     private static let expiryDateKey = "expiryDate"
     
-    private static let shouldExpireKey = "shouldExpire"
-    
     static let `default` = RequestURLCache(memoryCapacity: 10 * 1024 * 1024,
                                            diskCapacity: 25 * 1024 * 1024,
                                            diskPath: nil)
@@ -32,13 +30,16 @@ final class RequestURLCache: URLCache {
     }
     
     override func cachedResponse(for request: URLRequest) -> CachedURLResponse? {
+        let selfType = type(of: self)
         let cachedResponse = super.cachedResponse(for: request)
-        guard let shouldExpire = cachedResponse?.userInfo?[type(of: self).shouldExpireKey] as? Bool else {
+        let userInfo = cachedResponse?.userInfo
+        guard let shouldExpire = userInfo?[selfType.shouldExpireKey] as? Bool else {
             return nil
         }
         guard shouldExpire else { return cachedResponse }
-        if let expiryDate = cachedResponse?.userInfo?[type(of: self).expiryDateKey] as? Date {
-            if expiryDate.timeIntervalSinceNow < -self.defaultCacheExpiry {
+        if let expiryDate = userInfo?[selfType.expiryDateKey] as? Date  {
+            let age = userInfo?[selfType.cacheAge] as? TimeInterval ?? self.defaultCacheExpiry
+            if expiryDate.timeIntervalSinceNow < -age {
                 self.removeCachedResponse(for: request)
             } else {
                 return cachedResponse
@@ -57,7 +58,13 @@ final class RequestURLCache: URLCache {
         userInfo[selfType.shouldExpireKey] = shouldExpire
         
         if shouldExpire {
-            userInfo[selfType.expiryDateKey] = Date()
+            if userInfo[selfType.expiryDateKey] as? Data == nil {
+                userInfo[selfType.expiryDateKey] = Date()
+            }
+            
+            if userInfo[selfType.cacheAge] as? TimeInterval == nil {
+                userInfo[selfType.cacheAge] = self.defaultCacheExpiry
+            }
         }
         super.storeCachedResponse(CachedURLResponse(response: cachedResponse.response,
                                                     data: cachedResponse.data,
@@ -65,4 +72,9 @@ final class RequestURLCache: URLCache {
                                                     storagePolicy: cachedResponse.storagePolicy),
                                   for: request)
     }
+}
+
+extension RequestURLCache {
+    static let shouldExpireKey = "shouldExpire"
+    static let cacheAge = "cache-age"
 }

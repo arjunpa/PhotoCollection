@@ -37,3 +37,23 @@ struct Request: Requestable {
         return request
     }
 }
+
+struct CacheableRequest: CacheRequestable {
+    
+    let request: Request
+    
+    let expiry: CacheExpiry
+    
+    init(request: Request, expiry: CacheExpiry) {
+        self.request = request
+        self.expiry = expiry
+    }
+    
+    func asURLRequest() throws -> URLRequest {
+        let urlRequest = try self.request.asURLRequest()
+        guard let method = urlRequest.httpMethod, RequestMethod(rawValue: method) == .some(.get) else {
+            throw APIServiceError.CacheableRequestError.invalidMethod
+        }
+        return urlRequest
+    }
+}

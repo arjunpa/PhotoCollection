@@ -13,4 +13,8 @@ enum APIServiceError: Error {
     enum URLFormableError: Error {
         case failed
     }
+    
+    enum CacheableRequestError: Error {
+        case invalidMethod
+    }
 }

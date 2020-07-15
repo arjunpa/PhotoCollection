@@ -32,7 +32,7 @@ final class PhotoListViewController: UIViewController {
     private func configureTableView() {
         self.listTableView.delegate = self
         self.listTableView.dataSource = self
-        self.listTableView.estimatedRowHeight = 60.0
+        self.listTableView.estimatedRowHeight = 82.0
         self.listTableView.rowHeight = UITableView.automaticDimension
     }
 }

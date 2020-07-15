@@ -36,7 +36,9 @@ final class PhotoListRepository: PhotoListRepositoryInterface {
                         self.fetchPhotosFromRemote(with: request, completion: completion)
                         return
                 }
-                completion(.success(decoded))
+                DispatchQueue.main.async {
+                    completion(.success(decoded))
+                }
             }
             return
         }
@@ -48,14 +50,18 @@ final class PhotoListRepository: PhotoListRepositoryInterface {
         self.apiService.request(for: request) { (result: Result<APIHTTPDecodableResponse<[Photo]>, Error>) in
                                                 switch result {
                                                 case .success(let response):
-                                                    completion(.success(response.decoded))
+                                                    DispatchQueue.main.async {
+                                                        completion(.success(response.decoded))
+                                                    }
                                                     guard let httpResponse = response.httpResponse else { return }
                                                     self.cache.store(response: CachedURLResponse(response: httpResponse,
                                                                                                  data: response.data),
                                                                      forRequest: request,
                                                                      completion: nil)
                                                 case .failure(let error):
-                                                    completion(.failure(error))
+                                                    DispatchQueue.main.async {
+                                                        completion(.failure(error))
+                                                    }
                                                 }
         }
     }

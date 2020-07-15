@@ -12,8 +12,10 @@ final class PhotoListDependencyBuilder {
     
     static func build() -> PhotoListViewController {
         let viewController: PhotoListViewController = UIStoryboard(storyboardName: .main).instantiateViewController()
-        viewController.photosListViewModel = PhotoListViewModel(with: PhotoListRepository(apiService: APIService(),
-                                                                                          cache: DiskURLCache.default))
+        let photosListViewModel = PhotoListViewModel(with: PhotoListRepository(apiService: APIService(),
+                                                                               cache: DiskURLCache.default))
+        photosListViewModel.viewDelegate = viewController
+        viewController.photosListViewModel = photosListViewModel
         return viewController
     }
 }

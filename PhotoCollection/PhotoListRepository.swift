@@ -44,7 +44,7 @@ final class PhotoListRepository: PhotoListRepositoryInterface {
                     }
                     self?.handleResult(.success(response), request: request, fromCache: true, completion: completion)
                 case .failure(let error):
-                    self?.handleResult(.failure(error), request: request, fromCache: true, completion: completion)
+                    self?.handleResult(.failure(error), request: request, fromCache: false, completion: completion)
                 }
             }
             return

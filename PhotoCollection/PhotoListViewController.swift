@@ -76,6 +76,7 @@ extension PhotoListViewController: PhotoListViewDelegate {
     
     func didFailWithError(error: DisplayableError) {
         let alertViewController = UIAlertController(title: error.title, message: error.body, preferredStyle: .alert)
+        alertViewController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alertViewController, animated: true, completion: nil)
     }
 }

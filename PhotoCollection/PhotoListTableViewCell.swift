@@ -9,16 +9,20 @@
 import UIKit
 
 class PhotoListTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var thumbnailImageView: UIImageView!
+    
+    func configure(with viewModelInterface: PhotoViewModelInterface) {
+        self.titleLabel.text = viewModelInterface.title
+        
+        viewModelInterface.image { result in
+            switch result {
+            case .success(let image):
+                self.thumbnailImageView.image = image
+            case .failure:
+                self.imageView?.image = nil
+            }
+        }
+    }
 }

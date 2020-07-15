@@ -24,11 +24,11 @@ final class PhotoListViewModel: PhotoListViewModelInterface {
     let repository: PhotoListRepositoryInterface
     weak var viewDelegate: PhotoListViewDelegate?
     
-    private var photoViewModels: [PhotoViewModel] = []
-    
     var numberOfRows: Int {
         return self.photoViewModels.count
     }
+    
+    private var photoViewModels: [PhotoViewModel] = []
     
     init(with repository: PhotoListRepositoryInterface) {
         self.repository = repository

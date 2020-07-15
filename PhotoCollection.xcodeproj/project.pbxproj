@@ -35,6 +35,7 @@
 		C20D383F24BED787007B38EB /* PhotoListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C20D383D24BED787007B38EB /* PhotoListTableViewCell.xib */; };
 		C281793124BEFC710048C89F /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C281793024BEFC710048C89F /* ImageDownloader.swift */; };
 		C281793324BF005F0048C89F /* ImageDownloaderInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C281793224BF005F0048C89F /* ImageDownloaderInterface.swift */; };
+		C2AF563A24BF2311002671E8 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AF563924BF2311002671E8 /* PhotoDetailViewController.swift */; };
 		C2C4675D24BD995A001C6778 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C4675C24BD995A001C6778 /* AppDelegate.swift */; };
 		C2C4676124BD995A001C6778 /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C4676024BD995A001C6778 /* PhotoListViewController.swift */; };
 		C2C4676424BD995A001C6778 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2C4676224BD995A001C6778 /* Main.storyboard */; };
@@ -85,6 +86,7 @@
 		C20D383D24BED787007B38EB /* PhotoListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoListTableViewCell.xib; sourceTree = "<group>"; };
 		C281793024BEFC710048C89F /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		C281793224BF005F0048C89F /* ImageDownloaderInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloaderInterface.swift; sourceTree = "<group>"; };
+		C2AF563924BF2311002671E8 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
 		C2C4675924BD995A001C6778 /* PhotoCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2C4675C24BD995A001C6778 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2C4676024BD995A001C6778 /* PhotoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				C2C4676224BD995A001C6778 /* Main.storyboard */,
 				C20D381724BE4343007B38EB /* Models */,
 				C2C4676024BD995A001C6778 /* PhotoListViewController.swift */,
+				C2AF563924BF2311002671E8 /* PhotoDetailViewController.swift */,
 				C20D380924BDB2D9007B38EB /* Protocols */,
 				C20D382B24BEBEBB007B38EB /* View Models */,
 				C20D383924BED703007B38EB /* Views */,
@@ -460,6 +463,7 @@
 				C20D382124BE5485007B38EB /* URLFormable.swift in Sources */,
 				C20D382824BE58C5007B38EB /* APIEndpoint.swift in Sources */,
 				C20D382D24BEBECE007B38EB /* PhotoListViewModel.swift in Sources */,
+				C2AF563A24BF2311002671E8 /* PhotoDetailViewController.swift in Sources */,
 				C20D381224BDF6CD007B38EB /* DiskURLCache.swift in Sources */,
 				C20D381D24BE5156007B38EB /* Request.swift in Sources */,
 			);

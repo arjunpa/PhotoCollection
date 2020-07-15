@@ -56,7 +56,10 @@ extension PhotoListViewController: UITableViewDataSource {
 extension PhotoListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        guard let detailViewModel = self.photosListViewModel?.detailViewModel(at: indexPath.item) else { return }
+        let detailViewController: PhotoDetailViewController = UIStoryboard.init(storyboardName: .main).instantiateViewController()
+        detailViewController.detailViewModel = detailViewModel
+        self.navigationController?.pushViewController(detailViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {

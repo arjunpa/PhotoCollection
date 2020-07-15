@@ -25,6 +25,8 @@
 		C20D382624BE55C6007B38EB /* URLRequest+RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D382524BE55C6007B38EB /* URLRequest+RequestMethod.swift */; };
 		C20D382824BE58C5007B38EB /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D382724BE58C5007B38EB /* APIEndpoint.swift */; };
 		C20D382A24BE6417007B38EB /* CacheURLResponse+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D382924BE6417007B38EB /* CacheURLResponse+Decodable.swift */; };
+		C20D382D24BEBECE007B38EB /* PhotoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D382C24BEBECD007B38EB /* PhotoListViewModel.swift */; };
+		C20D382F24BEC0F0007B38EB /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D382E24BEC0F0007B38EB /* PhotoViewModel.swift */; };
 		C2C4675D24BD995A001C6778 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C4675C24BD995A001C6778 /* AppDelegate.swift */; };
 		C2C4676124BD995A001C6778 /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C4676024BD995A001C6778 /* PhotoListViewController.swift */; };
 		C2C4676424BD995A001C6778 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2C4676224BD995A001C6778 /* Main.storyboard */; };
@@ -64,6 +66,8 @@
 		C20D382524BE55C6007B38EB /* URLRequest+RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+RequestMethod.swift"; sourceTree = "<group>"; };
 		C20D382724BE58C5007B38EB /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
 		C20D382924BE6417007B38EB /* CacheURLResponse+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CacheURLResponse+Decodable.swift"; sourceTree = "<group>"; };
+		C20D382C24BEBECD007B38EB /* PhotoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewModel.swift; sourceTree = "<group>"; };
+		C20D382E24BEC0F0007B38EB /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
 		C2C4675924BD995A001C6778 /* PhotoCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2C4675C24BD995A001C6778 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2C4676024BD995A001C6778 /* PhotoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +166,15 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		C20D382B24BEBEBB007B38EB /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				C20D382C24BEBECD007B38EB /* PhotoListViewModel.swift */,
+				C20D382E24BEC0F0007B38EB /* PhotoViewModel.swift */,
+			);
+			name = "View Models";
+			sourceTree = "<group>";
+		};
 		C2C4675024BD995A001C6778 = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +198,7 @@
 		C2C4675B24BD995A001C6778 /* PhotoCollection */ = {
 			isa = PBXGroup;
 			children = (
+				C20D382B24BEBEBB007B38EB /* View Models */,
 				C20D382424BE5584007B38EB /* Extensions */,
 				C20D381724BE4343007B38EB /* Models */,
 				C20D380E24BDDF38007B38EB /* Foundation */,
@@ -385,6 +399,7 @@
 				C20D381924BE4355007B38EB /* Photo.swift in Sources */,
 				C20D381B24BE4952007B38EB /* APIResponse.swift in Sources */,
 				C20D380724BDB12F007B38EB /* APIService.swift in Sources */,
+				C20D382F24BEC0F0007B38EB /* PhotoViewModel.swift in Sources */,
 				C20D381624BE4268007B38EB /* PhotoListRepository.swift in Sources */,
 				C20D380D24BDB359007B38EB /* APIServiceInterface.swift in Sources */,
 				C20D382624BE55C6007B38EB /* URLRequest+RequestMethod.swift in Sources */,
@@ -392,6 +407,7 @@
 				C20D381F24BE5281007B38EB /* RequestEncoding.swift in Sources */,
 				C20D382124BE5485007B38EB /* URLFormable.swift in Sources */,
 				C20D382824BE58C5007B38EB /* APIEndpoint.swift in Sources */,
+				C20D382D24BEBECE007B38EB /* PhotoListViewModel.swift in Sources */,
 				C20D381224BDF6CD007B38EB /* DiskURLCache.swift in Sources */,
 				C20D381D24BE5156007B38EB /* Request.swift in Sources */,
 			);

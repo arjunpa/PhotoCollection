@@ -61,16 +61,15 @@
                                                         <view contentMode="scaleToFill" placeholderIntrinsicWidth="307" placeholderIntrinsicHeight="551" translatesAutoresizingMaskIntoConstraints="NO" id="MSt-T2-2or">
                                                             <rect key="frame" x="34" y="92" width="307" height="550"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2s2-Iz-miI">
-                                                                    <rect key="frame" x="19.666666666666657" y="74" width="268" height="283"/>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="2s2-Iz-miI">
+                                                                    <rect key="frame" x="19.666666666666657" y="46.999999999999986" width="268" height="178.66666666666663"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" secondItem="2s2-Iz-miI" secondAttribute="height" multiplier="268:283" id="4Yt-NR-Abd"/>
-                                                                        <constraint firstAttribute="height" constant="283" id="LcC-G0-1BF"/>
+                                                                        <constraint firstAttribute="width" secondItem="2s2-Iz-miI" secondAttribute="height" multiplier="3:2" id="4Yt-NR-Abd"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHE-Ts-Cyg">
-                                                                    <rect key="frame" x="19.666666666666657" y="385" width="268" height="29"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="900" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHE-Ts-Cyg">
+                                                                    <rect key="frame" x="19.666666666666657" y="241.66666666666669" width="268" height="24"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -78,20 +77,22 @@
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                             <constraints>
                                                                 <constraint firstItem="2s2-Iz-miI" firstAttribute="centerX" secondItem="MSt-T2-2or" secondAttribute="centerX" id="DXv-et-73I"/>
-                                                                <constraint firstItem="cHE-Ts-Cyg" firstAttribute="top" secondItem="2s2-Iz-miI" secondAttribute="bottom" constant="28" id="DkV-UF-3nJ"/>
+                                                                <constraint firstItem="cHE-Ts-Cyg" firstAttribute="top" secondItem="2s2-Iz-miI" secondAttribute="bottom" constant="16" id="DkV-UF-3nJ"/>
                                                                 <constraint firstAttribute="trailing" secondItem="2s2-Iz-miI" secondAttribute="trailing" constant="19.5" id="Ny4-Mq-YL6"/>
-                                                                <constraint firstItem="2s2-Iz-miI" firstAttribute="top" secondItem="MSt-T2-2or" secondAttribute="top" constant="74" id="Xe4-y4-2MY"/>
+                                                                <constraint firstItem="2s2-Iz-miI" firstAttribute="top" secondItem="MSt-T2-2or" secondAttribute="top" constant="47" id="Xe4-y4-2MY"/>
                                                                 <constraint firstItem="2s2-Iz-miI" firstAttribute="leading" secondItem="MSt-T2-2or" secondAttribute="leading" constant="19.5" id="cn9-wd-tUG"/>
                                                                 <constraint firstItem="cHE-Ts-Cyg" firstAttribute="leading" secondItem="2s2-Iz-miI" secondAttribute="leading" id="r5f-Ma-aeg"/>
-                                                                <constraint firstItem="cHE-Ts-Cyg" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2s2-Iz-miI" secondAttribute="trailing" id="s4P-x8-jDg"/>
-                                                                <constraint firstAttribute="bottom" secondItem="cHE-Ts-Cyg" secondAttribute="bottom" constant="136" id="uH1-nq-gfH"/>
+                                                                <constraint firstItem="cHE-Ts-Cyg" firstAttribute="trailing" secondItem="2s2-Iz-miI" secondAttribute="trailing" id="s4P-x8-jDg"/>
+                                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="cHE-Ts-Cyg" secondAttribute="bottom" constant="10" id="uH1-nq-gfH"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
                                                         <constraint firstItem="MSt-T2-2or" firstAttribute="centerY" secondItem="URe-C6-TMT" secondAttribute="centerY" id="K1r-d1-Z9x"/>
+                                                        <constraint firstAttribute="trailing" secondItem="MSt-T2-2or" secondAttribute="trailing" constant="34" id="PKd-lR-dcV"/>
                                                         <constraint firstItem="MSt-T2-2or" firstAttribute="top" secondItem="URe-C6-TMT" secondAttribute="top" constant="92" id="Sgl-1S-1FU"/>
+                                                        <constraint firstItem="MSt-T2-2or" firstAttribute="leading" secondItem="URe-C6-TMT" secondAttribute="leading" constant="34" id="WsR-em-lbW"/>
                                                         <constraint firstItem="MSt-T2-2or" firstAttribute="centerX" secondItem="URe-C6-TMT" secondAttribute="centerX" id="iTi-ug-vnI"/>
                                                     </constraints>
                                                 </view>

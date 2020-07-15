@@ -58,6 +58,10 @@ extension PhotoListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self.photosListViewModel?.cancelTasks(at: indexPath.row)
+    }
 }
 
 extension PhotoListViewController: PhotoListViewDelegate {

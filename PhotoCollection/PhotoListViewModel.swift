@@ -12,6 +12,7 @@ protocol PhotoListViewModelInterface {
     var numberOfRows: Int { get }
     func item(at index: Int) -> PhotoViewModelInterface
     func fetchPhotos()
+    func cancelTasks(at index: Int)
 }
 
 protocol PhotoListViewDelegate: class {
@@ -48,5 +49,9 @@ final class PhotoListViewModel: PhotoListViewModelInterface {
                 self?.viewDelegate?.didFailWithError()
             }
         }
+    }
+    
+    func cancelTasks(at index: Int) {
+        self.item(at: index).cancelImageDownload()
     }
 }

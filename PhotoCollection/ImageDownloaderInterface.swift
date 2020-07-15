@@ -13,5 +13,5 @@ protocol ImageDownloadCancellableTask {
 }
 
 protocol ImageDownloaderInterface {
-    func downloadImage(with url: URL, completion: @escaping (Result<UIImage?, Error>) -> Void) -> ImageDownloadCancellableTask?
+    func downloadImage(with url: URL, size: CGSize, completion: @escaping (Result<UIImage?, Error>) -> Void) -> ImageDownloadCancellableTask?
 }

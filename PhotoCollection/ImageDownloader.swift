@@ -21,8 +21,11 @@ final class ImageDownloader: ImageDownloaderInterface {
         self.kfManager = kfManager
     }
     
-    func downloadImage(with url: URL, completion: @escaping (Result<UIImage?, Error>) -> Void) -> ImageDownloadCancellableTask? {
-        self.kfManager.retrieveImage(with: url) { result in
+    func downloadImage(with url: URL, size: CGSize, completion: @escaping (Result<UIImage?, Error>) -> Void) -> ImageDownloadCancellableTask? {
+        self.kfManager.retrieveImage(with: url,
+                                     options: [.processor(DownsamplingImageProcessor(size: size)),
+                                               .scaleFactor(UIScreen.main.scale),
+                                               .cacheOriginalImage]) { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let result):

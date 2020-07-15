@@ -11,7 +11,7 @@ import UIKit
 protocol PhotoViewModelInterface {
     var title: String { get }
     var imageURL: URL { get }
-    func image(completion: @escaping (Result<UIImage?, Error>) -> Void)
+    func image(with size: CGSize, completion: @escaping (Result<UIImage?, Error>) -> Void)
     func cancelImageDownload()
 }
 
@@ -33,8 +33,9 @@ final class PhotoViewModel: PhotoViewModelInterface {
         self.imageDownloader = imageDownloader
     }
     
-    func image(completion: @escaping (Result<UIImage?, Error>) -> Void) {
+    func image(with size: CGSize, completion: @escaping (Result<UIImage?, Error>) -> Void) {
         self.currentImageTask =  self.imageDownloader.downloadImage(with: self.imageURL,
+                                                                    size: size,
                                                                     completion: completion)
     }
     

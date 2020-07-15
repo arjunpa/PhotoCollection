@@ -16,7 +16,7 @@ class PhotoListTableViewCell: UITableViewCell {
     func configure(with viewModelInterface: PhotoViewModelInterface) {
         self.titleLabel.text = viewModelInterface.title
         self.thumbnailImageView.image = nil
-        viewModelInterface.image { [weak self] result in
+        viewModelInterface.image(with: self.thumbnailImageView.bounds.size) { [weak self] result in
             switch result {
             case .success(let image):
                 self?.thumbnailImageView.image = image

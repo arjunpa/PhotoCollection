@@ -33,6 +33,8 @@
 		C20D383824BED6ED007B38EB /* UITableViewCell+ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D383724BED6ED007B38EB /* UITableViewCell+ReuseIdentifier.swift */; };
 		C20D383E24BED787007B38EB /* PhotoListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D383C24BED787007B38EB /* PhotoListTableViewCell.swift */; };
 		C20D383F24BED787007B38EB /* PhotoListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C20D383D24BED787007B38EB /* PhotoListTableViewCell.xib */; };
+		C281793124BEFC710048C89F /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C281793024BEFC710048C89F /* ImageDownloader.swift */; };
+		C281793324BF005F0048C89F /* ImageDownloaderInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C281793224BF005F0048C89F /* ImageDownloaderInterface.swift */; };
 		C2C4675D24BD995A001C6778 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C4675C24BD995A001C6778 /* AppDelegate.swift */; };
 		C2C4676124BD995A001C6778 /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C4676024BD995A001C6778 /* PhotoListViewController.swift */; };
 		C2C4676424BD995A001C6778 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2C4676224BD995A001C6778 /* Main.storyboard */; };
@@ -80,6 +82,8 @@
 		C20D383724BED6ED007B38EB /* UITableViewCell+ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+ReuseIdentifier.swift"; sourceTree = "<group>"; };
 		C20D383C24BED787007B38EB /* PhotoListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListTableViewCell.swift; sourceTree = "<group>"; };
 		C20D383D24BED787007B38EB /* PhotoListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoListTableViewCell.xib; sourceTree = "<group>"; };
+		C281793024BEFC710048C89F /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		C281793224BF005F0048C89F /* ImageDownloaderInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloaderInterface.swift; sourceTree = "<group>"; };
 		C2C4675924BD995A001C6778 /* PhotoCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2C4675C24BD995A001C6778 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2C4676024BD995A001C6778 /* PhotoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 				C20D383724BED6ED007B38EB /* UITableViewCell+ReuseIdentifier.swift */,
 				C20D381324BDF6EA007B38EB /* URLCacheable.swift */,
 				C20D382024BE5485007B38EB /* URLFormable.swift */,
+				C281793224BF005F0048C89F /* ImageDownloaderInterface.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 				C20D381C24BE5156007B38EB /* Request.swift */,
 				C20D381E24BE5281007B38EB /* RequestEncoding.swift */,
 				C20D380F24BDDF60007B38EB /* RequestURLCache.swift */,
+				C281793024BEFC710048C89F /* ImageDownloader.swift */,
 			);
 			name = Foundation;
 			sourceTree = "<group>";
@@ -427,6 +433,7 @@
 			files = (
 				C20D382A24BE6417007B38EB /* CacheURLResponse+Decodable.swift in Sources */,
 				C20D383424BECB37007B38EB /* UIStoryboard+StoryboardAdditions.swift in Sources */,
+				C281793124BEFC710048C89F /* ImageDownloader.swift in Sources */,
 				C20D381424BDF6EA007B38EB /* URLCacheable.swift in Sources */,
 				C20D382324BE54C5007B38EB /* APIServiceError.swift in Sources */,
 				C20D383224BECAAE007B38EB /* PhotoListDependencyBuilder.swift in Sources */,
@@ -441,6 +448,7 @@
 				C20D383E24BED787007B38EB /* PhotoListTableViewCell.swift in Sources */,
 				C20D382F24BEC0F0007B38EB /* PhotoViewModel.swift in Sources */,
 				C20D381624BE4268007B38EB /* PhotoListRepository.swift in Sources */,
+				C281793324BF005F0048C89F /* ImageDownloaderInterface.swift in Sources */,
 				C20D380D24BDB359007B38EB /* APIServiceInterface.swift in Sources */,
 				C20D382624BE55C6007B38EB /* URLRequest+RequestMethod.swift in Sources */,
 				C2C4675D24BD995A001C6778 /* AppDelegate.swift in Sources */,

@@ -11,7 +11,8 @@ import UIKit
 protocol PhotoViewModelInterface {
     var title: String { get }
     var imageURL: URL { get }
-    func image(completion: (Result<UIImage?, Error>) -> Void)
+    func image(completion: @escaping (Result<UIImage?, Error>) -> Void)
+    func cancelImageDownload()
 }
 
 final class PhotoViewModel: PhotoViewModelInterface {
@@ -20,12 +21,24 @@ final class PhotoViewModel: PhotoViewModelInterface {
     
     let imageURL: URL
     
-    init(with title: String, imageURL: URL) {
+    private let imageDownloader: ImageDownloaderInterface
+    
+    private var currentImageTask: ImageDownloadCancellableTask?
+    
+    init(with title: String,
+         imageURL: URL,
+         imageDownloader: ImageDownloaderInterface = ImageDownloader.default) {
         self.title = title
         self.imageURL = imageURL
+        self.imageDownloader = imageDownloader
     }
     
-    func image(completion: (Result<UIImage?, Error>) -> Void) {
-           
+    func image(completion: @escaping (Result<UIImage?, Error>) -> Void) {
+        self.currentImageTask =  self.imageDownloader.downloadImage(with: self.imageURL,
+                                                                    completion: completion)
+    }
+    
+    func cancelImageDownload() {
+        self.currentImageTask?.cancel()
     }
 }

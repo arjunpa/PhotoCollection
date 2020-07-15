@@ -5,7 +5,7 @@ target 'PhotoCollection' do
 use_frameworks!
 
 pod 'Alamofire', '5.1'
-pod 'AlamofireImage', '4.1.0'
+pod 'Kingfisher', '5.14.1'
 
 # Pods
 target 'PhotoCollectionTests' do

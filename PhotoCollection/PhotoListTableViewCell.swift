@@ -15,13 +15,13 @@ class PhotoListTableViewCell: UITableViewCell {
     
     func configure(with viewModelInterface: PhotoViewModelInterface) {
         self.titleLabel.text = viewModelInterface.title
-        
-        viewModelInterface.image { result in
+        self.thumbnailImageView.image = nil
+        viewModelInterface.image { [weak self] result in
             switch result {
             case .success(let image):
-                self.thumbnailImageView.image = image
+                self?.thumbnailImageView.image = image
             case .failure:
-                self.imageView?.image = nil
+                self?.thumbnailImageView.image = nil
             }
         }
     }

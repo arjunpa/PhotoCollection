@@ -11,6 +11,7 @@ import Foundation
 protocol PhotoListViewModelInterface {
     var numberOfRows: Int { get }
     func item(at index: Int) -> PhotoViewModelInterface
+    func detailViewModel(at index: Int) -> PhotoDetailViewModelInterface
     func fetchPhotos()
     func cancelTasks(at index: Int)
 }
@@ -39,11 +40,15 @@ final class PhotoListViewModel: PhotoListViewModelInterface {
         return self.photoViewModels[index]
     }
     
+    func detailViewModel(at index: Int) -> PhotoDetailViewModelInterface {
+        return PhotoDetailViewModel(photo: self.photoViewModels[index].photo)
+    }
+    
     func fetchPhotos() {
         self.repository.fetchPhotos { [weak self] result in
             switch result {
             case .success(let photos):
-                self?.photoViewModels = photos.map({ PhotoViewModel(with: $0.title, imageURL: $0.thumbnailURL) })
+                self?.photoViewModels = photos.map({ PhotoViewModel(with: $0) })
                 self?.viewDelegate?.updateView()
             case .failure:
                 self?.viewDelegate?.didFailWithError()

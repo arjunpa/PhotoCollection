@@ -21,15 +21,17 @@ final class PhotoViewModel: PhotoViewModelInterface {
     
     let imageURL: URL
     
+    let photo: Photo
+    
     private let imageDownloader: ImageDownloaderInterface
     
     private var currentImageTask: ImageDownloadCancellableTask?
     
-    init(with title: String,
-         imageURL: URL,
+    init(with photo: Photo,
          imageDownloader: ImageDownloaderInterface = ImageDownloader.default) {
-        self.title = title
-        self.imageURL = imageURL
+        self.photo = photo
+        self.title = photo.title
+        self.imageURL = photo.thumbnailURL
         self.imageDownloader = imageDownloader
     }
     

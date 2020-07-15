@@ -8,10 +8,9 @@
 
 import Foundation
 
-typealias URLCacheableStoreCompletion = (Bool) -> ()
-typealias URLCacheableGetCompletion = (CachedURLResponse?) -> ()
+typealias URLCacheableStoreCompletion = (Result<Bool, Error>) -> ()
 
 protocol URLCacheable {
-    func store(response: CachedURLResponse, forRequest request: Requestable, completion: URLCacheableStoreCompletion?)
-    func get(forRequest request: Requestable, completion: @escaping URLCacheableGetCompletion)
+    func store<T: Decodable>(response: APIHTTPDecodableResponse<T>, forRequest request: Requestable, completion: URLCacheableStoreCompletion?)
+    func get<T: Decodable>(forRequest request: Requestable, completion: @escaping (Result<APIHTTPDecodableResponse<T>?, Error>) -> Void)
 }

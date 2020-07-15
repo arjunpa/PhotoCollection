@@ -13,7 +13,7 @@ struct APIHTTPDataResponse {
     let httpResponse: HTTPURLResponse?
 }
 
-struct APIHTTPDecodableResponse<T> {
+struct APIHTTPDecodableResponse<T> where T:Decodable {
     let data: Data
     let decoded: T
     let httpResponse: HTTPURLResponse?

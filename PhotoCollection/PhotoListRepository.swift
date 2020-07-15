@@ -29,40 +29,44 @@ final class PhotoListRepository: PhotoListRepositoryInterface {
                               parameters: nil,
                               headers: nil,
                               encoding: GetRequestEncoding())
+        
+        let responseClosure: (Result<APIHTTPDecodableResponse<[Photo]>, Error>) -> () = { [weak self] result in
+            self?.handleResult(result, request: request, fromCache: false, completion: completion)
+        }
+        
         guard self.apiService.isReachable else {
-            self.cache.get(forRequest: request) { cachedResponse in
-                guard let cachedResponse = cachedResponse,
-                      let decoded = try? cachedResponse.decoded(with: [Photo].self) else {
-                        self.fetchPhotosFromRemote(with: request, completion: completion)
+            self.cache.get(forRequest: request) { [weak self] (result: Result<APIHTTPDecodableResponse<[Photo]>?, Error>) in
+                switch result {
+                case .success(let response):
+                    guard let response = response else {
+                        self?.apiService.request(for: request, completion: responseClosure)
                         return
-                }
-                DispatchQueue.main.async {
-                    completion(.success(decoded))
+                    }
+                    self?.handleResult(.success(response), request: request, fromCache: true, completion: completion)
+                case .failure(let error):
+                    completion(.failure(error))
                 }
             }
             return
         }
-        self.fetchPhotosFromRemote(with: request, completion: completion)
+        self.apiService.request(for: request, completion: responseClosure)
     }
     
-    private func fetchPhotosFromRemote(with request: Requestable, completion: @escaping (Result<[Photo], Error>) -> Void) {
-        
-        self.apiService.request(for: request) { (result: Result<APIHTTPDecodableResponse<[Photo]>, Error>) in
-                                                switch result {
-                                                case .success(let response):
-                                                    DispatchQueue.main.async {
-                                                        completion(.success(response.decoded))
-                                                    }
-                                                    guard let httpResponse = response.httpResponse else { return }
-                                                    self.cache.store(response: CachedURLResponse(response: httpResponse,
-                                                                                                 data: response.data),
-                                                                     forRequest: request,
-                                                                     completion: nil)
-                                                case .failure(let error):
-                                                    DispatchQueue.main.async {
-                                                        completion(.failure(error))
-                                                    }
-                                                }
+    private func handleResult(_ result: Result<APIHTTPDecodableResponse<[Photo]>, Error>,
+                              request: Requestable,
+                              fromCache: Bool,
+                              completion: @escaping (Result<[Photo], Error>) -> Void) {
+        switch result {
+        case .success(let response):
+            DispatchQueue.main.async {
+                completion(.success(response.decoded))
+            }
+            guard !fromCache else { return }
+            self.cache.store(response: response, forRequest: request, completion: nil)
+        case .failure(let error):
+            DispatchQueue.main.async {
+                completion(.failure(error))
+            }
         }
     }
 }

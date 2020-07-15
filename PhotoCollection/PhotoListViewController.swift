@@ -34,6 +34,7 @@ final class PhotoListViewController: UIViewController {
         self.listTableView.dataSource = self
         self.listTableView.estimatedRowHeight = 82.0
         self.listTableView.rowHeight = UITableView.automaticDimension
+        self.listTableView.tableFooterView = UIView(frame: .zero)
     }
 }
 
@@ -73,8 +74,9 @@ extension PhotoListViewController: PhotoListViewDelegate {
         self.listTableView.reloadData()
     }
     
-    func didFailWithError() {
-        
+    func didFailWithError(error: DisplayableError) {
+        let alertViewController = UIAlertController(title: error.title, message: error.body, preferredStyle: .alert)
+        self.present(alertViewController, animated: true, completion: nil)
     }
 }
 

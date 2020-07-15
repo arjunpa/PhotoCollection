@@ -18,7 +18,7 @@ protocol PhotoListViewModelInterface {
 
 protocol PhotoListViewDelegate: class {
     func updateView()
-    func didFailWithError()
+    func didFailWithError(error: DisplayableError)
 }
 
 final class PhotoListViewModel: PhotoListViewModelInterface {
@@ -51,7 +51,7 @@ final class PhotoListViewModel: PhotoListViewModelInterface {
                 self?.photoViewModels = photos.map({ PhotoViewModel(with: $0) })
                 self?.viewDelegate?.updateView()
             case .failure:
-                self?.viewDelegate?.didFailWithError()
+                self?.viewDelegate?.didFailWithError(error: ServiceError.generic)
             }
         }
     }

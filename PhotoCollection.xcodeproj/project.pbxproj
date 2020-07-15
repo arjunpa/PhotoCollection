@@ -165,13 +165,13 @@
 				C20D381A24BE4952007B38EB /* APIResponse.swift */,
 				C20D380624BDB12F007B38EB /* APIService.swift */,
 				C20D382224BE54C5007B38EB /* APIServiceError.swift */,
-				C24567FB24BF7637001172FD /* ServiceError.swift */,
 				C20D381124BDF6CD007B38EB /* DiskURLCache.swift */,
+				C281793024BEFC710048C89F /* ImageDownloader.swift */,
 				C20D381524BE4268007B38EB /* PhotoListRepository.swift */,
 				C20D381C24BE5156007B38EB /* Request.swift */,
 				C20D381E24BE5281007B38EB /* RequestEncoding.swift */,
 				C20D380F24BDDF60007B38EB /* RequestURLCache.swift */,
-				C281793024BEFC710048C89F /* ImageDownloader.swift */,
+				C24567FB24BF7637001172FD /* ServiceError.swift */,
 			);
 			name = Foundation;
 			sourceTree = "<group>";
